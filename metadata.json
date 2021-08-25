@@ -1,0 +1,35 @@
+{
+  "name": "evenup-puppet",
+  "version": "0.3.2",
+  "author": "Justin Lambert",
+  "summary": "Module to manage puppet, puppet-server",
+  "license": "Apache-2.0",
+  "source": "https://github.com/evenup/puppet-puppet",
+  "project_page": "https://github.com/evenup/evenup-puppet",
+  "issues_url": "https://github.com/evenup/evenup-puppet/issues",
+  "tags": ["puppet", "puppetserver"],
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease":[ "6", "7" ]
+    },
+    {
+      "operatingsystem":"CentOS",
+      "operatingsystemrelease":[ "6", "7" ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [ "12.04", "14.04" ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">=4.0.0"
+    }
+  ],
+  "dependencies": [
+    { "name": "puppetlabs/stdlib", "version_requirement": ">=4.2.0 <5.0.0" },
+    { "name": "puppetlabs/firewall", "version_requirement": ">= 1.2.0 <2.0.0" }
+  ]
+}

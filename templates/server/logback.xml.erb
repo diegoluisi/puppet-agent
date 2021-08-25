@@ -1,0 +1,35 @@
+<!-- Managed by puppet - do not modify -->
+
+<configuration scan="true">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d %-5p [%t] [%c{2}] %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="F1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- TODO: this path should not be hard-coded -->
+        <file><%= @log_dir %>/<%= @log_file %></file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>/var/log/puppetlabs/puppetserver/puppetserver-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <!-- each file should be at most 10MB, keep 90 days worth of history, but at most 1GB total-->
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>90</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %-5p [%t] [%c{2}] %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.eclipse.jetty" level="INFO"/>
+
+    <root level="info">
+        <!--<appender-ref ref="STDOUT"/>-->
+        <!-- ${logappender} logs to console when running the foreground command -->
+        <appender-ref ref="${logappender}"/>
+        <appender-ref ref="F1"/>
+    </root>
+</configuration>

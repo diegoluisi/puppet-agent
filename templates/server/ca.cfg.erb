@@ -1,0 +1,7 @@
+# Manged by puppet - do not modify
+
+<% if @ca_enabled -%>
+puppetlabs.services.ca.certificate-authority-service/certificate-authority-service
+<% else -%>
+puppetlabs.services.ca.certificate-authority-disabled-service/certificate-authority-disabled-service
+<% end -%>
